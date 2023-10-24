@@ -12,10 +12,20 @@ help:
 env:
 	@python3 -m venv venv
 
-## run: start the application.
-.PHONY: run
-run:
+## app/migrate: run migrations
+.PHONY: app/migrate
+app/migrate:
+	./manage.py migrate
+
+## app/run: start the application.
+.PHONY: app/run
+app/run:
 	./manage.py runserver
+
+## app/openapi: generates openapi docs
+.PHONY: app/openapi
+app/openapi:
+	./manage.py spectacular --file docs/auto-generated.yaml
 
 ## docker/up: up the docker compose stack.
 .PHONY: docker/up

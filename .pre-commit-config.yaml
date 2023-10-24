@@ -14,12 +14,6 @@ repos:
     - id: black
       language_version: python3.10
 
-  - repo: https://github.com/pycqa/isort
-    rev: 5.12.0
-    hooks:
-      - id: isort
-        name: isort (python)
-
   - repo: local
     hooks:
       - id: pylint
@@ -33,7 +27,8 @@ repos:
             "-sn",
             "--load-plugins=pylint_django",
             "--django-settings-module=friends.settings",
-            "--ignore=manage.py"
+            "--ignore=manage.py",
+            "--ignore-paths=.*/migrations/*"
           ]
 
   - repo: https://github.com/Riverside-Healthcare/djLint
